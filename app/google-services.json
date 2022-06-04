@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "259465285522",
+    "project_id": "mythought-e6ba7",
+    "storage_bucket": "mythought-e6ba7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259465285522:android:fd7024ed55e7797b573b4b",
+        "android_client_info": {
+          "package_name": "com.example.mythoughts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259465285522-b3rc3qg2v3dtamshgpe9qhhh7j8p3kha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAiPle_2uMlzvIC4GosAqf_EmHwfMNUZc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259465285522-b3rc3qg2v3dtamshgpe9qhhh7j8p3kha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
