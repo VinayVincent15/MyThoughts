@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,7 +21,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private EditText ETtitle,ETthought;
-    private Button save,show;
+    private Button save, show, update, delete;
     private TextView TVrectitle,TVrecthought;
     private static final String keytitle="Title", keythought="Thought";
 
@@ -37,14 +38,16 @@ public class MainActivity extends AppCompatActivity {
         TVrectitle = findViewById(R.id.TVrectitle);
         TVrecthought = findViewById(R.id.TVrecthought);
         show = findViewById(R.id.Btnshow);
+        update = findViewById(R.id.Btnupdate);
+        delete = findViewById(R.id.BtnDelete);
 
         save.setOnClickListener(v -> {
             String title = ETtitle.getText().toString().trim();
             String thought = ETthought.getText().toString().trim();
-            Map<String,Object> user = new HashMap<>();
-            user.put(keytitle, title);
-            user.put(keythought, thought);
-            journalref.set(user)
+            Map<String,Object> data = new HashMap<>();
+            data.put(keytitle, title);
+            data.put(keythought, thought);
+            journalref.set(data)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
@@ -71,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
                             }
                             else{
                                 Toast.makeText(MainActivity.this,"No data",Toast.LENGTH_SHORT).show();
+                                TVrectitle.setText("");
+                                TVrecthought.setText("");
                             }
                         }
                     })
@@ -81,5 +86,29 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
         });
+
+        update.setOnClickListener(v -> {
+            Map<String,Object> data =new HashMap<>();
+            data.put(keytitle,ETtitle.getText().toString().trim());
+            data.put(keythought,ETthought.getText().toString().trim());
+            journalref.update(data)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            Toast.makeText(MainActivity.this,"Updated Successfully",Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(MainActivity.this,"Update Failed",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        });
+
+        delete.setOnClickListener(v ->{
+            journalref.delete();
+        });
+
     }
 }
