@@ -3,4 +3,6 @@
     <string name="title">Enter Title</string>
     <string name="Thought">Enter Thought</string>
     <string name="add">Add Thought</string>
+    <string name="show">Show Thought</string>
+    <string name="mythoughts">MyThoughts</string>
 </resources>
